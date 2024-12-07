@@ -7,10 +7,13 @@
 #include "sort.h"
 
 
+
+
+
 static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
      unsigned int pivot;
 
-    if (izq<der){ 
+    if (izq<der && izq<0u-1u && der<0u -1u){ 
         pivot = partition(a,izq,der);
         quick_sort_rec(a,izq,pivot-1);
         quick_sort_rec(a,pivot+1,der); 

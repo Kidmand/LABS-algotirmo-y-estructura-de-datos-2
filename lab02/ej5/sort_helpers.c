@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "array_helpers.h"
+
 #include "sort_helpers.h"
-#include "fixstring.h"
+
 
 void swap(fixstring a[], unsigned int i, unsigned int j) {
     fstring_swap(a[i],a[j]);

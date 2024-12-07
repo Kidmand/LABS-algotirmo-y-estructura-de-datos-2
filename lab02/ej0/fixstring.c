@@ -14,26 +14,19 @@ unsigned int fstring_length(fixstring s) {
     return length;
 }
 
+
 bool fstring_eq(fixstring s1, fixstring s2) {
-     bool eq, aux;
-    eq= true;
-    aux = true;
-    unsigned int i = 0;
+     bool eq = true;
+     int k = 0;
 
-    while (eq && aux) {       
-
-        if (s1[i]!='\0' && s2[i]!='\0') {
-            eq = (s1[i] == s2[i]);
-            ++i;
-        } else { 
-           eq = s1[i] == s2[i];
-           aux=false;
-        }
-    
+    while (s1[k] != '\0' && s2[k] != '\0' && eq) {       
+         eq = s1[k] == s2[k];
+         k = k+1;
     } 
-
-    return eq;
+    
+    return eq && s2[k]=='\0' && s1[k]=='\0';
 }
+
 
 bool fstring_less_eq(fixstring s1, fixstring s2) {
     bool menor, resultado;
@@ -54,4 +47,7 @@ bool fstring_less_eq(fixstring s1, fixstring s2) {
     }
     return resultado;
 }
+
+
+
 

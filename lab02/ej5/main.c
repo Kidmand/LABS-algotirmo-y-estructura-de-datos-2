@@ -5,7 +5,6 @@
 
 /* Then, this project's includes, alphabetically ordered */
 #include "array_helpers.h"
-#include "fixstring.h"
 #include "sort_helpers.h"
 #include "sort.h"
 

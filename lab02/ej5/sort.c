@@ -3,67 +3,62 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "array_helpers.h"
+//#include "array_helpers.h"
 #include "sort_helpers.h"
 #include "sort.h"
-#include "fixstring.h"
+
 
 
 static unsigned int partition(fixstring a[], unsigned int izq, unsigned int der) {
-    unsigned int pivot;
+    unsigned int pivot, i,j;
   pivot = izq;
-  ++izq;
-  while (izq<der) {
-    if (goes_before(a[izq],a[pivot])) {
-        ++izq;
+  i = izq+1; 
+  j = der;
+  while (i<=j) {
+    if (goes_before(a[i],a[pivot])) {
+        ++i;
 
-    }  else { 
-            if (goes_before(a[pivot],a[der])){
-                --der;
-             } 
-               else { 
-                   // if (goes_before(a[pivot],a[izq]) && goes_before(a[der],a[pivot])) {
-                        swap(a,izq,der);
-                       // ++izq;
-                     //   --der;
-               // }    
+    }  else if (goes_before(a[pivot],a[j])){
+                --j;
+      } else if (!goes_before(a[i],a[pivot]) && !goes_before(a[pivot],a[j])) {
+                 swap(a,i,j);
+                 j--;
+                 i++;       
+               
             }
         }
-  
-  }    
-   
-    swap(a,pivot,der);
+     
+ 
+    swap(a,pivot,j);
+    pivot = j;
     
   
 
-    return der;
+    return pivot;
 }
 
 /*static unsigned int partition(fixstring a[], unsigned int izq, unsigned int der) {
-    unsigned int pivot;
+   unsigned int pivot, i,j;
   pivot = izq;
-  ++izq;
-  while (izq<der && false ) {
-    if (fstring_length(a[pivot]) <= fstring_length(a[izq])) {
-        ++izq;
+  i = izq+1; 
+  j = der;
+  while (i<=j) {
+    if (fstring_length(a[i]) <= fstring_length(a[pivot])) {
+        ++i;
 
-    }  else { 
-            if (fstring_length(a[der]) >= fstring_length(a[pivot]){
-                --der;
+    }  else if (fstring_length(a[j]) >= fstring_length(a[pivot])){
+                --j;
              } 
-               else { 
-                    if (fstring_length(a[pivot]) > fstring_length(a[izq]) && fstring_length(a[der]) < fstring_length(a[pivot] {
-                        swap(a,izq,der);
-                        ++izq;
-                        --der;
+               else if (fstring_length(a[pivot]) < fstring_length(a[i]) && fstring_length(a[j]) < fstring_length(a[pivot])) {
+                        swap(a,i,j);
+                        ++i;
+                        --j;
                 }    
             }
-        }
-  
-  }    
+      
    
-    swap(a,pivot,der);
-    pivot = der;
+    swap(a,pivot,j);
+    pivot = j;
   
 
     return pivot;
@@ -72,7 +67,7 @@ static unsigned int partition(fixstring a[], unsigned int izq, unsigned int der)
 static void quick_sort_rec(fixstring a[], unsigned int izq, unsigned int der) {
      unsigned int pivot;
 
-    if (izq<der){ 
+    if (izq<der && izq<0u-1u && der<0u-1u){ 
         pivot = partition(a,izq,der);
         
         quick_sort_rec(a,izq,pivot-1);
